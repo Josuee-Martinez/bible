@@ -4,6 +4,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
+app.use(require("./middleware/headers"));
+
 app.use("/bibles", require("./controllers/bibleController"));
 
 const PORT = process.env.PORT || 5000;

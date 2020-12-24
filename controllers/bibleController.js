@@ -21,4 +21,22 @@ router.get("/", async (req, res) => {
    }
 });
 
+router.get("/:bibleId/books", async (req, res) => {
+   try {
+      const config = {
+         headers: {
+            "api-key": process.env.API_KEY,
+         },
+      };
+      const axiosRes = await axios.get(
+         `https://api.scripture.api.bible/v1/bibles/${req.params.bibleId}/books`,
+         config
+      );
+
+      res.json(axiosRes.data);
+   } catch (error) {
+      console.error(error);
+   }
+});
+
 module.exports = router;

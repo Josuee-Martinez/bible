@@ -1,29 +1,35 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getBibleBookChapters } from "../actions/getBibles";
 
-const DisplayBibleBooks = ({ bibleBooks }) => {
+const DisplayBibleBooks = ({ bibleBooks, getBibleBookChapters }) => {
    console.log(bibleBooks);
    const showInfo = (e) => {
-      console.log(e.target.dataset.bibleid, e.target.dataset.biblebookid);
+      getBibleBookChapters(
+         e.target.dataset.bibleid,
+         e.target.dataset.biblebookid
+      );
    };
 
    return (
-      <div>
+      <div className="biblebook-grid">
          {bibleBooks === null
             ? ""
             : bibleBooks.data.map((book, i) => (
-                 <div key={i} className="book">
-                    <a
-                       href="#!"
-                       onClick={showInfo}
-                       data-bibleid={book.bibleId}
-                       data-biblebookid={book.id}
-                    >
-                       {book.name}
-                    </a>
-                 </div>
+                 <Link
+                    to={`/book/${book.name}`}
+                    className="btn btn-primary"
+                    onClick={showInfo}
+                    data-bibleid={book.bibleId}
+                    data-biblebookid={book.id}
+                    key={i}
+                 >
+                    {book.name}
+                 </Link>
               ))}
       </div>
    );
 };
 
-export default DisplayBibleBooks;
+export default connect(null, { getBibleBookChapters })(DisplayBibleBooks);

@@ -3,11 +3,16 @@ import {
    GET_BIBLES_ERROR,
    GET_BIBLE_BOOKS,
    GET_BIBLE_BOOKS_ERROR,
+   GET_BIBLE_BOOK_CHAPTERS,
+   GET_BIBLE_BOOK_CHAPTERS_ERROR,
+   GET_SINGLE_CHAPTER,
 } from "../actions/types";
 
 const initialState = {
    bibles: null,
    bibleBooks: null,
+   bibleBookChapters: null,
+   chapter: null,
 };
 
 export default function (state = initialState, action) {
@@ -19,10 +24,21 @@ export default function (state = initialState, action) {
             bibles: payload,
          };
       case GET_BIBLE_BOOKS:
-         // console.log(payload);
          return {
             ...state,
             bibleBooks: payload,
+         };
+      case GET_BIBLE_BOOK_CHAPTERS:
+         // console.log(payload);
+         return {
+            ...state,
+            bibleBookChapters: payload,
+         };
+      case GET_SINGLE_CHAPTER:
+         console.log(payload.data);
+         return {
+            ...state,
+            chapter: payload.data.content,
          };
       default:
          return state;

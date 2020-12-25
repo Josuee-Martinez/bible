@@ -5,6 +5,10 @@ import {
    GET_BIBLES_ERROR,
    GET_BIBLE_BOOKS,
    GET_BIBLE_BOOKS_ERROR,
+   GET_BIBLE_BOOK_CHAPTERS,
+   GET_BIBLE_BOOK_CHAPTERS_ERROR,
+   GET_SINGLE_CHAPTER,
+   GET_SINGLE_CHAPTER_ERROR,
 } from "./types";
 
 export const getBibles = () => async (dispatch) => {
@@ -29,6 +33,36 @@ export const getBibleBooks = (bibleId) => async (dispatch) => {
    } catch (err) {
       dispatch({
          type: GET_BIBLE_BOOKS_ERROR,
+      });
+   }
+};
+
+export const getBibleBookChapters = (bibleId, bibleBookId) => async (
+   dispatch
+) => {
+   try {
+      const res = await axios.get(
+         `http://localhost:5000/bibles/${bibleId}/book/${bibleBookId}`
+      );
+
+      dispatch({ type: GET_BIBLE_BOOK_CHAPTERS, payload: res.data });
+   } catch (err) {
+      dispatch({
+         type: GET_BIBLE_BOOK_CHAPTERS_ERROR,
+      });
+   }
+};
+
+export const getSingleChapter = (bibleId, chapterId) => async (dispatch) => {
+   try {
+      const res = await axios.get(
+         `http://localhost:5000/bibles/${bibleId}/chapter/${chapterId}`
+      );
+
+      dispatch({ type: GET_SINGLE_CHAPTER, payload: res.data });
+   } catch (err) {
+      dispatch({
+         type: GET_SINGLE_CHAPTER_ERROR,
       });
    }
 };

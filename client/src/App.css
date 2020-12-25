@@ -1,7 +1,27 @@
 body {
    text-align: center;
+   width: 80%;
+   margin: auto;
 }
 
-.book {
-   padding: 20px;
+form {
+   margin: 20px;
+}
+
+.heading {
+   margin: 20px;
+}
+
+.biblebook-grid {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+   /* justify-items: ce nter; */
+}
+
+.btn {
+   background-color: rgba(128, 216, 251, 0.8);
+   padding: 5px;
+   border: 1px solid white;
+   cursor: pointer;
+   color: #000;
 }

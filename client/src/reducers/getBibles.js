@@ -38,7 +38,7 @@ export default function (state = initialState, action) {
          console.log(payload.data);
          return {
             ...state,
-            chapter: payload.data.content,
+            chapter: payload,
          };
       default:
          return state;

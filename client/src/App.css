@@ -1,11 +1,13 @@
 body {
    text-align: center;
-   width: 80%;
-   margin: auto;
+}
+
+nav {
+   background-color: #3c818a !important;
 }
 
 form {
-   margin: 20px;
+   width: 100%;
 }
 
 .heading {
@@ -19,9 +21,22 @@ form {
 }
 
 .btn {
-   background-color: rgba(128, 216, 251, 0.8);
+   background-color: #3c818a;
    padding: 5px;
    border: 1px solid white;
    cursor: pointer;
-   color: #000;
+   color: #fff;
+}
+
+.btn:hover {
+   background-color: #44a4b1 !important;
+   border: none;
+}
+
+.input-group.md-form.form-sm.form-2 button.lime-border {
+   border: 1px solid #3c818a;
+}
+
+.input-group.md-form.form-sm.form-2 select.lime-border {
+   border: 1px solid #3c818a;
 }

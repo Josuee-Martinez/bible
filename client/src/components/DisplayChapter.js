@@ -7,8 +7,16 @@ import ReactHtmlParser, {
 } from "react-html-parser";
 
 const DisplayChapter = ({ data: { chapter } }) => {
-   console.log(chapter);
-   return <div>{ReactHtmlParser(chapter)}</div>;
+   // console.log(chapter.data);
+   return (
+      <div>
+         {chapter === null
+            ? ""
+            : chapter.data.reference.split(" ")[0] + " " + chapter.data.number}
+
+         {chapter === null ? "" : ReactHtmlParser(chapter.data.content)}
+      </div>
+   );
 };
 
 const mapStateToProps = (state) => ({

@@ -3,41 +3,46 @@ import { connect } from "react-redux";
 import { getBibleBooks } from "../actions/getBibles";
 
 const GetBibleBooks = ({ getBibleBooks, bibles }) => {
-   const [id, setId] = useState({
-      idd: "",
-   });
+   const [id, setId] = useState("");
 
-   const { idd } = id;
+   // const { idd } = id;
 
    const handleChange = (e) => {
-      setId({ ...id, [e.target.name]: e.target.value });
+      setId(e.target.value);
    };
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      getBibleBooks(idd);
+      getBibleBooks(id);
    };
 
    return (
       <form onSubmit={handleSubmit}>
-         <select
-            name="bibles"
-            id="bibles"
-            type="text"
-            id="text"
-            name="idd"
-            value={idd}
-            onChange={handleChange}
-         >
-            {bibles === null
-               ? ""
-               : bibles.data.map((bible, i) => (
-                    <option key={i} value={bible.id}>
-                       {bible.name}
-                    </option>
-                 ))}
-         </select>
-         <button type="submit" />
+         <div className="form-group  input-group md-form form-sm form-2 pl-0 mt-4">
+            {/* <label htmlFor="bibles">Select Bible version</label> */}
+            <select
+               type="text"
+               name="id"
+               onChange={handleChange}
+               value={id}
+               className="form-control custom-select lime-border"
+            >
+               <option value="">Select Bile version</option>
+               {bibles === null
+                  ? ""
+                  : bibles.data.map((bible, i) => (
+                       <option key={i} value={bible.id}>
+                          {bible.name}
+                       </option>
+                    ))}
+            </select>
+            <button
+               type="submit"
+               className="input-group-text lime-border lighten-2"
+            >
+               <i className="fas fa-search text-grey" aria-hidden="true"></i>
+            </button>
+         </div>
       </form>
    );
 };

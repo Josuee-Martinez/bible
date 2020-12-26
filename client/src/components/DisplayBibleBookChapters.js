@@ -15,7 +15,7 @@ const DisplayBibleBookChapters = ({
 
    return (
       <Fragment>
-         <div className="heading">
+         <div className="mt-4 mb-4">
             <h3>{match.params.name}</h3>
          </div>
          <div className="biblebook-grid">

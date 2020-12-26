@@ -23,7 +23,7 @@ const DisplayChapter = ({
    return (
       <Fragment>
          <div>
-            <h3 className="pt-4">
+            <h3 className="mt-4 mb-4">
                {chapter === null
                   ? ""
                   : chapter.data.reference.split(" ")[0] +

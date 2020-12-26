@@ -7,6 +7,8 @@ import "./App.css";
 //component imports
 import Home from "./components/layout/Home";
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 
@@ -37,6 +39,7 @@ function App() {
                   </Switch>
                </div>
             </Fragment>
+            <Footer />
          </Router>
       </Provider>
    );

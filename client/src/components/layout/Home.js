@@ -1,15 +1,10 @@
 import React, { useEffect, Fragment } from "react";
 import GetBibleBooks from "../GetBibleBooks";
 import DisplayBibleBooks from "../DisplayBibleBooks";
-import DisplayBibleBookChapters from "../DisplayBibleBookChapters";
-
 import { connect } from "react-redux";
 import { getBibles } from "../../actions/getBibles";
 
-const Home = ({
-   getBibles,
-   data: { bibles, bibleBooks, bibleBookChapters },
-}) => {
+const Home = ({ getBibles, data: { bibles, bibleBooks } }) => {
    useEffect(() => {
       getBibles();
    }, [getBibles]);
@@ -18,7 +13,6 @@ const Home = ({
       <Fragment>
          <GetBibleBooks bibles={bibles} />
          <DisplayBibleBooks bibleBooks={bibleBooks} />
-         {/* <DisplayBibleBookChapters bibleBookChapters={bibleBookChapters} /> */}
       </Fragment>
    );
 };

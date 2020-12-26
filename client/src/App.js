@@ -7,6 +7,8 @@ import "./App.css";
 //component imports
 import Home from "./components/layout/Home";
 import Navbar from "./components/layout/Navbar";
+import Signup from "./components/auth/Signup";
+import Login from "./components/auth/Login";
 
 import DisplayBibleBookChapters from "./components/DisplayBibleBookChapters";
 import DisplayChapter from "./components/DisplayChapter";
@@ -30,6 +32,8 @@ function App() {
                         path="/chapter/:chapterId"
                         component={DisplayChapter}
                      />
+                     <Route exact path="/signup" component={Signup} />
+                     <Route exact path="/login" component={Login} />
                   </Switch>
                </div>
             </Fragment>

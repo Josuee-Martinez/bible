@@ -13,7 +13,7 @@ const DisplayBibleBooks = ({ bibleBooks, getBibleBookChapters }) => {
    };
 
    return (
-      <div className="biblebook-grid">
+      <div className="biblebook-grid mt-0">
          {bibleBooks === null
             ? ""
             : bibleBooks.data.map((book, i) => (

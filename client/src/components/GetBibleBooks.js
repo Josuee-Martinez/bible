@@ -5,8 +5,6 @@ import { getBibleBooks } from "../actions/getBibles";
 const GetBibleBooks = ({ getBibleBooks, bibles }) => {
    const [id, setId] = useState("");
 
-   // const { idd } = id;
-
    const handleChange = (e) => {
       setId(e.target.value);
    };
@@ -17,15 +15,14 @@ const GetBibleBooks = ({ getBibleBooks, bibles }) => {
    };
 
    return (
-      <form onSubmit={handleSubmit}>
-         <div className="form-group  input-group md-form form-sm form-2 pl-0 mt-4">
-            {/* <label htmlFor="bibles">Select Bible version</label> */}
+      <form onSubmit={handleSubmit} className="mt-4 mb-4">
+         <div className="form-group  input-group md-form form-sm form-2 pl-0">
             <select
                type="text"
                name="id"
                onChange={handleChange}
                value={id}
-               className="form-control custom-select lime-border"
+               className="form-control blue-border"
             >
                <option value="">Select Bile version</option>
                {bibles === null
@@ -36,11 +33,8 @@ const GetBibleBooks = ({ getBibleBooks, bibles }) => {
                        </option>
                     ))}
             </select>
-            <button
-               type="submit"
-               className="input-group-text lime-border lighten-2"
-            >
-               <i className="fas fa-search text-grey" aria-hidden="true"></i>
+            <button type="submit" className="input-group-text blue-border">
+               <i className="fas fa-search"></i>
             </button>
          </div>
       </form>

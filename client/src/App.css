@@ -1,5 +1,6 @@
-body {
-   text-align: center;
+* {
+   margin: 0;
+   padding: 0;
 }
 
 nav {
@@ -10,8 +11,22 @@ form {
    width: 100%;
 }
 
-.heading {
-   margin: 20px;
+.auth-form {
+   border: 1px solid #3c818a;
+   padding: 20px;
+   color: #3c818a;
+}
+
+.auth-form input {
+   border: 0.2px solid #2c95c8;
+}
+
+input:focus {
+   outline: none;
+}
+
+.pagination-links {
+   text-align: center;
 }
 
 .biblebook-grid {
@@ -33,10 +48,18 @@ form {
    border: none;
 }
 
-.input-group.md-form.form-sm.form-2 button.lime-border {
+.input-group.md-form.form-sm.form-2 button.blue-border {
    border: 1px solid #3c818a;
 }
 
-.input-group.md-form.form-sm.form-2 select.lime-border {
+.input-group.md-form.form-sm.form-2 select.blue-border {
    border: 1px solid #3c818a;
+}
+
+.pagination-btn {
+   margin: 10px;
+   padding: 5px;
+   background-color: #3c818a !important;
+   color: #fff;
+   border: none;
 }

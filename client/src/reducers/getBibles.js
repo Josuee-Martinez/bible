@@ -13,6 +13,8 @@ const initialState = {
    bibleBooks: null,
    bibleBookChapters: null,
    chapter: null,
+   nextChapter: null,
+   previousChapter: null,
 };
 
 export default function (state = initialState, action) {
@@ -39,6 +41,8 @@ export default function (state = initialState, action) {
          return {
             ...state,
             chapter: payload,
+            nextChapter: payload.data.next,
+            previousChapter: payload.data.previous,
          };
       default:
          return state;

@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { getSingleChapter } from "../actions/getBibles";
-
 import { connect } from "react-redux";
 
 const DisplayBibleBookChapters = ({
@@ -16,7 +15,9 @@ const DisplayBibleBookChapters = ({
 
    return (
       <Fragment>
-         <div className="heading">{match.params.name}</div>
+         <div className="heading">
+            <h3>{match.params.name}</h3>
+         </div>
          <div className="biblebook-grid">
             {bibleBookChapters === null
                ? ""

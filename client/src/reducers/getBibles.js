@@ -6,6 +6,8 @@ import {
    GET_BIBLE_BOOK_CHAPTERS,
    GET_BIBLE_BOOK_CHAPTERS_ERROR,
    GET_SINGLE_CHAPTER,
+   GET_CHAPTER_VERSE,
+   GET_CHAPTER_VERSE_ERROR,
 } from "../actions/types";
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
    chapter: null,
    nextChapter: null,
    previousChapter: null,
+   verse: null,
 };
 
 export default function (state = initialState, action) {
@@ -43,6 +46,12 @@ export default function (state = initialState, action) {
             chapter: payload,
             nextChapter: payload.data.next,
             previousChapter: payload.data.previous,
+         };
+      case GET_CHAPTER_VERSE:
+         console.log(payload.data.content[0].items[1]);
+         return {
+            ...state,
+            verse: payload,
          };
       default:
          return state;

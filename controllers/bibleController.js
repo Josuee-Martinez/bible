@@ -66,7 +66,26 @@ router.get("/:bibleId/chapter/:chapterId", async (req, res) => {
          },
       };
       const axiosRes = await axios.get(
-         `https://api.scripture.api.bible/v1/bibles/${req.params.bibleId}/chapters/${req.params.chapterId}`,
+         `https://api.scripture.api.bible/v1/bibles/${req.params.bibleId}/chapters/${req.params.chapterId}?content-type=json`,
+
+         config
+      );
+
+      res.json(axiosRes.data);
+   } catch (error) {
+      console.error(error);
+   }
+});
+
+router.get("/:bibleId/verse/:verseId", async (req, res) => {
+   try {
+      const config = {
+         headers: {
+            "api-key": process.env.API_KEY,
+         },
+      };
+      const axiosRes = await axios.get(
+         `https://api.scripture.api.bible/v1/bibles/${req.params.bibleId}/verses/${req.params.verseId}?content-type=json`,
 
          config
       );

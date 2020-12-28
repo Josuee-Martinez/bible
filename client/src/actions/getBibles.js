@@ -9,6 +9,8 @@ import {
    GET_BIBLE_BOOK_CHAPTERS_ERROR,
    GET_SINGLE_CHAPTER,
    GET_SINGLE_CHAPTER_ERROR,
+   GET_CHAPTER_VERSE,
+   GET_CHAPTER_VERSE_ERROR,
 } from "./types";
 
 export const getBibles = () => async (dispatch) => {
@@ -63,6 +65,20 @@ export const getSingleChapter = (bibleId, chapterId) => async (dispatch) => {
    } catch (err) {
       dispatch({
          type: GET_SINGLE_CHAPTER_ERROR,
+      });
+   }
+};
+
+export const getChapterVerse = (bibleId, verseId) => async (dispatch) => {
+   try {
+      const res = await axios.get(
+         `http://localhost:5000/bibles/${bibleId}/verse/${verseId}`
+      );
+
+      dispatch({ type: GET_CHAPTER_VERSE, payload: res.data });
+   } catch (err) {
+      dispatch({
+         type: GET_CHAPTER_VERSE_ERROR,
       });
    }
 };

@@ -27,13 +27,22 @@ form {
 }
 
 .auth-form {
+   position: absolute;
+   left: 50%;
+   top: 40%;
+   transform: translate(-50%, -50%);
+   color: #3c818a;
+   background-color: rgb(248, 251, 251);
+   /* width: 500px; */
+   width: 50%;
    border: 1px solid #3c818a;
-   padding: 20px;
+   padding: 50px;
    color: #3c818a;
 }
 
 .auth-form input {
-   border: 0.2px solid #2c95c8;
+   border: 0.2px solid #3c818a;
+   background-color: rgb(248, 251, 251);
 }
 
 input:focus {

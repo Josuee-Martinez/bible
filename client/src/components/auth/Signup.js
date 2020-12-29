@@ -2,10 +2,14 @@ import React from "react";
 
 const Signup = () => {
    return (
-      <form className="form auth-form mt-4">
+      <form className="form auth-form mt-4 form-info">
          <div class="form-group">
             <label for="email">Enter Email</label>
             <input type="text" id="email" class="form-control" />
+         </div>
+         <div class="form-group">
+            <label for="name">Enter Username</label>
+            <input type="text" id="name" class="form-control" />
          </div>
          <div class="form-group">
             <label for="password">Enter Password</label>

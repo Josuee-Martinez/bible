@@ -8,7 +8,7 @@ import "./App.css";
 import Home from "./components/layout/Home";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-
+import Account from "./components/layout/Account";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 
@@ -36,6 +36,7 @@ function App() {
                      />
                      <Route exact path="/signup" component={Signup} />
                      <Route exact path="/login" component={Login} />
+                     <Route exact path="/account" component={Account} />
                   </Switch>
                </div>
             </Fragment>

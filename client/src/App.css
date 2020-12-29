@@ -50,6 +50,10 @@ input:focus {
    /* justify-items: ce nter; */
 }
 
+h5.modal-title {
+   color: #3c818a !important;
+}
+
 .btn {
    background-color: #3c818a;
    padding: 5px;

@@ -5,7 +5,7 @@ import { getBibleBookChapters } from "../actions/getBibles";
 
 const DisplayBibleBooks = ({ bibleBooks, getBibleBookChapters }) => {
    console.log(bibleBooks);
-   const showInfo = (e) => {
+   const getChapters = (e) => {
       getBibleBookChapters(
          e.target.dataset.bibleid,
          e.target.dataset.biblebookid
@@ -20,7 +20,7 @@ const DisplayBibleBooks = ({ bibleBooks, getBibleBookChapters }) => {
                  <Link
                     to={`/book/${book.name}`}
                     className="btn btn-primary"
-                    onClick={showInfo}
+                    onClick={getChapters}
                     data-bibleid={book.bibleId}
                     data-biblebookid={book.id}
                     key={i}

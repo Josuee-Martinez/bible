@@ -18,6 +18,7 @@ const initialState = {
    nextChapter: null,
    previousChapter: null,
    verse: null,
+   verseContent: null,
 };
 
 export default function (state = initialState, action) {
@@ -52,6 +53,10 @@ export default function (state = initialState, action) {
          return {
             ...state,
             verse: payload,
+            verseContent: payload.data.content[0].items
+               .map((p) => (p.name === "char" ? p.items[0].text : p.text))
+               .filter((item) => item !== undefined)
+               .join(""),
          };
       default:
          return state;

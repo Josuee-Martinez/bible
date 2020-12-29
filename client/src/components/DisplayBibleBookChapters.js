@@ -9,7 +9,7 @@ const DisplayBibleBookChapters = ({
    match,
 }) => {
    console.log(bibleBookChapters);
-   const showInfo = (e) => {
+   const getChapter = (e) => {
       getSingleChapter(e.target.dataset.bibleid, e.target.dataset.chapterid);
    };
 
@@ -28,7 +28,7 @@ const DisplayBibleBookChapters = ({
                        key={i}
                        data-bibleid={chapter.bibleId}
                        data-chapterid={chapter.id}
-                       onClick={showInfo}
+                       onClick={getChapter}
                     >
                        {chapter.reference.split(" ")[0]}: {chapter.number}
                     </Link>

@@ -1,36 +1,32 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { getSingleChapter } from "../actions/getBibles";
 import { getChapterVerse } from "../actions/getBibles";
 
-import ReactHtmlParser, {
-   processNodes,
-   convertNodeToElement,
-   htmlparser2,
-} from "react-html-parser";
-import Navbar from "./layout/Navbar";
-
 const DisplayChapter = ({
    getSingleChapter,
    getChapterVerse,
-   data: { chapter, nextChapter, previousChapter },
+   data: { chapter, nextChapter, previousChapter, verse, verseContent },
 }) => {
-   useEffect(() => {
-      window.scrollTo(0, 0);
-   });
-
    const getNext = () => {
       getSingleChapter(chapter.data.bibleId, nextChapter.id);
+      window.scrollTo(0, 0);
    };
 
    const getPrevious = () => {
       getSingleChapter(chapter.data.bibleId, previousChapter.id);
+      window.scrollTo(0, 0);
    };
 
-   const showInfo = (e) => {
-      // console.log(e.target.dataset);
+   const getVerse = (e) => {
       getChapterVerse(e.target.dataset.bibleid, e.target.dataset.verseid);
    };
+
+   const saveVerse = (e) => {
+      console.log(verse.data.reference, verseContent);
+   };
+
+   console.log(verse);
    return (
       <Fragment>
          <div>
@@ -41,33 +37,100 @@ const DisplayChapter = ({
                     " " +
                     chapter.data.number}
             </h3>
-
             {chapter === null
                ? ""
                : chapter.data.content.map((item) =>
                     item.items.map((n, i) => {
                        if (n.name === "verse") {
-                          let verse = n.attrs.sid
+                          let selectedVerse = n.attrs.sid
                              .replace(" ", ".")
                              .replace(":", ".");
-                          //   console.log(verse);
+                          //   console.log(n);
                           return (
-                             <a
-                                href="#!"
-                                data-bibleid={chapter.data.bibleId}
-                                data-verseid={verse}
-                                onClick={showInfo}
-                                className="verse-link"
-                             >
-                                {n.attrs.number}{" "}
-                             </a>
+                             <Fragment>
+                                <a
+                                   data-toggle="modal"
+                                   data-target="#exampleModal"
+                                   href="#!"
+                                   data-bibleid={chapter.data.bibleId}
+                                   data-verseid={selectedVerse}
+                                   onClick={getVerse}
+                                   className="verse-link"
+                                >
+                                   {n.attrs.number}
+                                </a>
+
+                                <div
+                                   class="modal fade"
+                                   id="exampleModal"
+                                   tabindex="-1"
+                                   role="dialog"
+                                   aria-labelledby="exampleModalLabel"
+                                   aria-hidden="true"
+                                >
+                                   <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                         <div class="modal-header">
+                                            <h5
+                                               class="modal-title"
+                                               id="exampleModalLabel"
+                                            >
+                                               {/* <i class="fas fa-book-open"> */}
+                                               {/* {" "}
+                                                  Save{" "}
+                                                  {verse === null
+                                                     ? ""
+                                                     : verse.data.content[0]
+                                                          .items[1].attrs
+                                                          .verseId}{" "}
+                                                  to my verse collection? */}{" "}
+                                               Save to verse collection ?
+                                               {/* </i> */}
+                                            </h5>
+                                            <button
+                                               type="button"
+                                               class="close"
+                                               data-dismiss="modal"
+                                               aria-label="Close"
+                                            >
+                                               <span aria-hidden="true">
+                                                  &times;
+                                               </span>
+                                            </button>
+                                         </div>
+                                         <div class="modal-body">
+                                            {verse === null
+                                               ? ""
+                                               : verse.data.reference}{" "}
+                                            {verseContent}
+                                         </div>
+                                         <div class="modal-footer">
+                                            <button
+                                               type="button"
+                                               class="btn btn-secondary"
+                                               data-dismiss="modal"
+                                            >
+                                               Discard
+                                            </button>
+                                            <button
+                                               type="button"
+                                               class="btn btn-primary"
+                                               data-dismiss="modal"
+                                               onClick={saveVerse}
+                                            >
+                                               Save
+                                            </button>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                             </Fragment>
                           );
                        }
-                       //   console.log(chapter.data);
+
                        return (
                           <span>
-                             {n.name === "char" ? n.items[0].text : ""}
-                             {n.text}{" "}
+                             {n.name === "char" ? n.items[0].text : ""} {n.text}{" "}
                           </span>
                        );
                     })

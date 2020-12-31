@@ -4,6 +4,7 @@ const initialState = {
    token: localStorage.getItem("token"),
    authenticated: null,
    loading: true,
+   user: null,
 };
 
 export default function (state = initialState, action) {

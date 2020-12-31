@@ -26,40 +26,40 @@ const Signup = ({ signup, authenticated }) => {
 
    return (
       <form className="form auth-form mt-4 form-info" onSubmit={handleSubmit}>
-         <div class="form-group">
-            <label for="email">Enter Email:</label>
+         <div className="form-group">
+            <label htmlFor="email">Enter Email:</label>
             <input
                type="text"
                id="email"
                name="email"
-               class="form-control"
+               className="form-control"
                value={email}
                onChange={handleChange}
             />
          </div>
-         <div class="form-group">
-            <label for="username">Enter Username:</label>
+         <div className="form-group">
+            <label htmlFor="username">Enter Username:</label>
             <input
                type="text"
                id="username"
                name="username"
-               class="form-control"
+               className="form-control"
                value={username}
                onChange={handleChange}
             />
          </div>
-         <div class="form-group">
-            <label for="password">Enter Password:</label>
+         <div className="form-group">
+            <label htmlFor="password">Enter Password:</label>
             <input
                type="text"
                id="password"
                name="password"
-               class="form-control"
+               className="form-control"
                value={password}
                onChange={handleChange}
             />
          </div>
-         <button type="submit" class="btn btn-primary">
+         <button type="submit" className="btn btn-primary">
             Sign up!
          </button>
       </form>

@@ -1,4 +1,11 @@
-import { SIGNUP, SIGNUP_ERROR, LOGIN } from "../actions/types";
+import {
+   SIGNUP,
+   SIGNUP_ERROR,
+   LOGIN,
+   LOAD_USER,
+   LOAD_USER_ERROR,
+   LOGOUT,
+} from "../actions/types";
 
 const initialState = {
    token: localStorage.getItem("token"),
@@ -24,7 +31,21 @@ export default function (state = initialState, action) {
          return {
             ...state,
          };
-
+      case LOAD_USER:
+         return {
+            ...state,
+            authenticated: true,
+            loading: false,
+            user: payload,
+         };
+      case LOGOUT:
+         localStorage.removeItem("token");
+         return {
+            ...state,
+            token: null,
+            authenticated: false,
+            loading: false,
+         };
       default:
          return state;
    }

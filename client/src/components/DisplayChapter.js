@@ -61,35 +61,30 @@ const DisplayChapter = ({
                                 </a>
 
                                 <div
-                                   class="modal fade"
+                                   key={i}
+                                   className="modal fade"
                                    id="exampleModal"
-                                   tabindex="-1"
+                                   tabIndex="-1"
                                    role="dialog"
                                    aria-labelledby="exampleModalLabel"
                                    aria-hidden="true"
                                 >
-                                   <div class="modal-dialog" role="document">
-                                      <div class="modal-content">
-                                         <div class="modal-header">
+                                   <div
+                                      className="modal-dialog"
+                                      role="document"
+                                      key={i}
+                                   >
+                                      <div className="modal-content" key={i}>
+                                         <div className="modal-header">
                                             <h5
-                                               class="modal-title"
+                                               className="modal-title"
                                                id="exampleModalLabel"
                                             >
-                                               {/* <i class="fas fa-book-open"> */}
-                                               {/* {" "}
-                                                  Save{" "}
-                                                  {verse === null
-                                                     ? ""
-                                                     : verse.data.content[0]
-                                                          .items[1].attrs
-                                                          .verseId}{" "}
-                                                  to my verse collection? */}{" "}
                                                Save to verse collection ?
-                                               {/* </i> */}
                                             </h5>
                                             <button
                                                type="button"
-                                               class="close"
+                                               className="close"
                                                data-dismiss="modal"
                                                aria-label="Close"
                                             >
@@ -98,23 +93,34 @@ const DisplayChapter = ({
                                                </span>
                                             </button>
                                          </div>
-                                         <div class="modal-body">
-                                            {verse === null
-                                               ? ""
-                                               : verse.data.reference}{" "}
+                                         <div className="modal-body">
+                                            {verse === null ? (
+                                               <div className="d-flex justify-content-center">
+                                                  <div
+                                                     className="spinner-border text-info"
+                                                     role="status"
+                                                  >
+                                                     <span className="sr-only">
+                                                        Loading...
+                                                     </span>
+                                                  </div>
+                                               </div>
+                                            ) : (
+                                               verse.data.reference
+                                            )}{" "}
                                             {verseContent}
                                          </div>
-                                         <div class="modal-footer">
+                                         <div className="modal-footer">
                                             <button
                                                type="button"
-                                               class="btn btn-secondary"
+                                               className="btn btn-secondary"
                                                data-dismiss="modal"
                                             >
                                                Discard
                                             </button>
                                             <button
                                                type="button"
-                                               class="btn btn-primary"
+                                               className="btn btn-primary"
                                                data-dismiss="modal"
                                                onClick={saveVerse}
                                             >

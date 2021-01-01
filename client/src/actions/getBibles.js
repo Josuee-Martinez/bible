@@ -15,7 +15,7 @@ import {
 
 export const getBibles = () => async (dispatch) => {
    try {
-      const res = await axios.get("http://localhost:5000/bibles");
+      const res = await axios.get("http://localhost:5000/api/bibles");
 
       dispatch({ type: GET_BIBLES, payload: res.data });
    } catch (err) {
@@ -28,7 +28,7 @@ export const getBibles = () => async (dispatch) => {
 export const getBibleBooks = (bibleId) => async (dispatch) => {
    try {
       const res = await axios.get(
-         `http://localhost:5000/bibles/${bibleId}/books`
+         `http://localhost:5000/api/bibles/${bibleId}/books`
       );
 
       dispatch({ type: GET_BIBLE_BOOKS, payload: res.data });
@@ -44,7 +44,7 @@ export const getBibleBookChapters = (bibleId, bibleBookId) => async (
 ) => {
    try {
       const res = await axios.get(
-         `http://localhost:5000/bibles/${bibleId}/book/${bibleBookId}`
+         `http://localhost:5000/api/bibles/${bibleId}/book/${bibleBookId}`
       );
 
       dispatch({ type: GET_BIBLE_BOOK_CHAPTERS, payload: res.data });
@@ -58,7 +58,7 @@ export const getBibleBookChapters = (bibleId, bibleBookId) => async (
 export const getSingleChapter = (bibleId, chapterId) => async (dispatch) => {
    try {
       const res = await axios.get(
-         `http://localhost:5000/bibles/${bibleId}/chapter/${chapterId}`
+         `http://localhost:5000/api/bibles/${bibleId}/chapter/${chapterId}`
       );
 
       dispatch({ type: GET_SINGLE_CHAPTER, payload: res.data });
@@ -72,7 +72,7 @@ export const getSingleChapter = (bibleId, chapterId) => async (dispatch) => {
 export const getChapterVerse = (bibleId, verseId) => async (dispatch) => {
    try {
       const res = await axios.get(
-         `http://localhost:5000/bibles/${bibleId}/verse/${verseId}`
+         `http://localhost:5000/api/bibles/${bibleId}/verse/${verseId}`
       );
 
       dispatch({ type: GET_CHAPTER_VERSE, payload: res.data });

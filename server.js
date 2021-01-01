@@ -7,11 +7,14 @@ const app = express();
 const connectDB = require("./config/db");
 
 app.use(express.json({ extended: false }));
+
 connectDB();
+
 app.use(require("./middleware/headers"));
 
-app.use("/bibles", require("./controllers/bibleController"));
-app.use("/user", require("./controllers/userController"));
+app.use("/api/bibles", require("./controllers/bibleController"));
+app.use("/api/user", require("./controllers/userController"));
+app.use("/api/auth", require("./controllers/authController"));
 
 const PORT = process.env.PORT || 5000;
 

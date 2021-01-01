@@ -1,6 +1,28 @@
 import axios from "axios";
+import setAuthToken from "../utils/setAuthToken";
 
-import { SIGNUP, SIGNUP_ERROR, LOGIN, LOGIN_ERROR } from "./types";
+import {
+   SIGNUP,
+   SIGNUP_ERROR,
+   LOGIN,
+   LOGIN_ERROR,
+   LOAD_USER,
+   LOAD_USER_ERROR,
+   LOGOUT,
+} from "./types";
+
+export const loadUser = () => async (dispatch) => {
+   if (localStorage.token) {
+      setAuthToken(localStorage.token);
+   }
+
+   try {
+      const res = await axios.get("http://localhost:5000/api/auth");
+      dispatch({ type: LOAD_USER, payload: res.data });
+   } catch (error) {
+      dispatch({ type: LOAD_USER_ERROR });
+   }
+};
 
 export const signup = (user) => async (dispatch) => {
    const config = {
@@ -10,7 +32,7 @@ export const signup = (user) => async (dispatch) => {
    };
    try {
       const res = await axios.post(
-         "http://localhost:5000/user/signup",
+         "http://localhost:5000/api/user",
          user,
          config
       );
@@ -31,7 +53,7 @@ export const login = (user) => async (dispatch) => {
    };
    try {
       const res = await axios.post(
-         "http://localhost:5000/user/login",
+         "http://localhost:5000/api/auth",
          user,
          config
       );
@@ -42,4 +64,8 @@ export const login = (user) => async (dispatch) => {
          type: LOGIN_ERROR,
       });
    }
+};
+
+export const logout = () => (dispatch) => {
+   dispatch({ type: LOGOUT });
 };

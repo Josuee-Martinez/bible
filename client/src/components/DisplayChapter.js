@@ -2,11 +2,15 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { getSingleChapter } from "../actions/getBibles";
 import { getChapterVerse } from "../actions/getBibles";
+import { saveVerse } from "../actions/verseCollection";
+import auth from "../reducers/auth";
 
 const DisplayChapter = ({
    getSingleChapter,
    getChapterVerse,
+   saveVerse,
    data: { chapter, nextChapter, previousChapter, verse, verseContent },
+   authenticated,
 }) => {
    const getNext = () => {
       getSingleChapter(chapter.data.bibleId, nextChapter.id);
@@ -22,11 +26,22 @@ const DisplayChapter = ({
       getChapterVerse(e.target.dataset.bibleid, e.target.dataset.verseid);
    };
 
-   const saveVerse = (e) => {
-      console.log(verse.data.reference, verseContent);
+   const saveUserVerse = (e) => {
+      // console.log(verse.data.reference, verseContent);
+      if (authenticated) {
+         const verseToSave = {
+            verseId: verse.data.id,
+            verseReference: verse.data.reference,
+            verseText: verseContent,
+         };
+
+         saveVerse({ verseToSave });
+      } else {
+         console.log("u need t be logged");
+      }
    };
 
-   console.log(verse);
+   console.log(chapter);
    return (
       <Fragment>
          <div>
@@ -42,10 +57,17 @@ const DisplayChapter = ({
                : chapter.data.content.map((item) =>
                     item.items.map((n, i) => {
                        if (n.name === "verse") {
-                          let selectedVerse = n.attrs.sid
-                             .replace(" ", ".")
-                             .replace(":", ".");
-                          //   console.log(n);
+                          let selectedVerse;
+                          if (n.attrs.sid === undefined) {
+                             selectedVerse =
+                                chapter.data.id + "." + n.attrs.number;
+                             console.log(n, "un", selectedVerse);
+                          } else {
+                             selectedVerse = n.attrs.sid
+                                .replace(" ", ".")
+                                .replace(":", ".");
+                             console.log(n, "de", selectedVerse);
+                          }
                           return (
                              <Fragment>
                                 <a
@@ -113,16 +135,16 @@ const DisplayChapter = ({
                                          <div className="modal-footer">
                                             <button
                                                type="button"
-                                               className="btn btn-secondary"
+                                               className="btn btn-secondary book-btn"
                                                data-dismiss="modal"
                                             >
                                                Discard
                                             </button>
                                             <button
                                                type="button"
-                                               className="btn btn-primary"
+                                               className="btn btn-primary book-btn"
                                                data-dismiss="modal"
-                                               onClick={saveVerse}
+                                               onClick={saveUserVerse}
                                             >
                                                Save
                                             </button>
@@ -147,7 +169,6 @@ const DisplayChapter = ({
                ""
             ) : (
                <button onClick={getPrevious} className="pagination-btn">
-                  {" "}
                   <i className="fas fa-arrow-left"></i>
                </button>
             )}
@@ -155,7 +176,6 @@ const DisplayChapter = ({
                ""
             ) : (
                <button onClick={getNext} className="pagination-btn">
-                  {" "}
                   <i className="fas fa-arrow-right"></i>
                </button>
             )}
@@ -166,8 +186,11 @@ const DisplayChapter = ({
 
 const mapStateToProps = (state) => ({
    data: state.getBibles,
+   authenticated: state.auth.authenticated,
 });
 
-export default connect(mapStateToProps, { getSingleChapter, getChapterVerse })(
-   DisplayChapter
-);
+export default connect(mapStateToProps, {
+   getSingleChapter,
+   getChapterVerse,
+   saveVerse,
+})(DisplayChapter);

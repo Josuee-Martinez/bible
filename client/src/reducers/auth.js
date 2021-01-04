@@ -39,6 +39,7 @@ export default function (state = initialState, action) {
             user: payload,
          };
       case LOGOUT:
+      case LOAD_USER_ERROR:
          localStorage.removeItem("token");
          return {
             ...state,

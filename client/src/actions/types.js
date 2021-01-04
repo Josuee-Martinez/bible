@@ -16,3 +16,10 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 export const LOAD_USER = "LOAD_USER";
 export const LOAD_USER_ERROR = "LOAD_USER_ERROR";
 export const LOGOUT = "LOGOUT";
+
+export const SAVE_VERSE = "SAVE_VERSE";
+export const SAVE_VERSE_ERROR = "SAVE_VERSE_ERROR";
+export const GET_USER_VERSES = "GET_USER_VERSES";
+export const GET_USER_VERSES_ERROR = "GET_USER_VERSES_ERROR";
+export const GET_VERSE_BY_ID = "GET_VERSE_BY_ID";
+export const GET_VERSE_BY_ID_ERROR = "GET_VERSE_BY_ID_ERROR";

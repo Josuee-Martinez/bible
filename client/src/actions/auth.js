@@ -38,6 +38,7 @@ export const signup = (user) => async (dispatch) => {
       );
 
       dispatch({ type: SIGNUP, payload: res.data });
+      dispatch(loadUser());
    } catch (err) {
       dispatch({
          type: SIGNUP_ERROR,
@@ -59,6 +60,7 @@ export const login = (user) => async (dispatch) => {
       );
 
       dispatch({ type: LOGIN, payload: res.data });
+      dispatch(loadUser());
    } catch (err) {
       dispatch({
          type: LOGIN_ERROR,

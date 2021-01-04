@@ -41,7 +41,7 @@ export default function (state = initialState, action) {
             bibleBookChapters: payload,
          };
       case GET_SINGLE_CHAPTER:
-         console.log(payload.data);
+         // console.log(payload.data);
          return {
             ...state,
             chapter: payload,
@@ -49,7 +49,8 @@ export default function (state = initialState, action) {
             previousChapter: payload.data.previous,
          };
       case GET_CHAPTER_VERSE:
-         console.log(payload.data.content[0].items[1]);
+         // console.log(payload.data.content[0].items[1]);
+         console.log(payload);
          return {
             ...state,
             verse: payload,

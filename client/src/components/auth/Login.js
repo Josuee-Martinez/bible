@@ -26,30 +26,38 @@ const Login = ({ login, authenticated }) => {
    return (
       <form className="form auth-form mt-4" onSubmit={handleSubmit}>
          <div className="form-group">
-            <label htmlFor="email">Enter Email</label>
+            {/* <label htmlFor="email">Enter Email</label> */}
             <input
                type="text"
                id="email"
                name="email"
-               className="form-control"
+               className="form-control form-control-lg mb-4"
                value={email}
                onChange={handleChange}
+               placeholder="Email"
             />
          </div>
          <div className="form-group">
-            <label htmlFor="password">Enter Password</label>
+            {/* <label htmlFor="password">Enter Password</label> */}
             <input
-               type="text"
+               type="password"
                id="password"
                name="password"
-               className="form-control"
+               className="form-control form-control-lg mb-4"
                value={password}
                onChange={handleChange}
+               placeholder="Password"
             />
          </div>
-         <button type="submit" className="btn btn-primary">
-            Log In!
+         <button
+            type="submit"
+            className="btn btn-primary btn-lg btn-block auth-btn mb-4"
+         >
+            Login!
          </button>
+         <Link to="/signup" className="auth-link">
+            Don't have an account?
+         </Link>
       </form>
    );
 };

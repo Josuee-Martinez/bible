@@ -18,6 +18,7 @@ const GetBibleBooks = ({ getBibleBooks, bibles }) => {
    //    e.preventDefault();
    //    getBibleBooks(id);
    // };
+   console.log(bibles);
 
    return (
       // <form onSubmit={handleSubmit} className="mt-4 mb-4">
@@ -33,11 +34,15 @@ const GetBibleBooks = ({ getBibleBooks, bibles }) => {
             <option value="">Select Bible Version</option>
             {bibles === null
                ? ""
-               : bibles.data.map((bible, i) => (
-                    <option key={i} value={bible.id}>
-                       {bible.name}
-                    </option>
-                 ))}
+               : bibles.data.map((bible, i) => {
+                    if (bible.language.id === "eng") {
+                       return (
+                          <option key={i} value={bible.id}>
+                             {bible.name}
+                          </option>
+                       );
+                    }
+                 })}
          </select>
          {/* <button type="submit" className="input-group-text blue-border">
                <i className="fas fa-search"></i>

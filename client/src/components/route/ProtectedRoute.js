@@ -12,7 +12,7 @@ const ProtectedRoute = ({
       {...rest}
       render={(props) =>
          !authenticated && !loading ? (
-            <Redirect to="/" />
+            <Redirect to="/login" />
          ) : (
             <Component {...props} />
          )

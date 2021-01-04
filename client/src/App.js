@@ -20,6 +20,8 @@ import ProtectedRoute from "./components/route/ProtectedRoute";
 import DisplayBibleBookChapters from "./components/DisplayBibleBookChapters";
 import DisplayChapter from "./components/DisplayChapter";
 
+import Verse from "./components/account/Verse";
+
 if (localStorage.token) {
    setAuthToken(localStorage.token);
 }
@@ -49,7 +51,12 @@ function App() {
                      />
                      <Route exact path="/signup" component={Signup} />
                      <Route exact path="/login" component={Login} />
-                     <ProtectedRoute path="/account" component={Account} />
+                     <ProtectedRoute
+                        exact
+                        path="/account"
+                        component={Account}
+                     />
+                     <ProtectedRoute path="/verse/:id" component={Verse} />
                   </Switch>
                </div>
             </Fragment>

@@ -31,22 +31,36 @@ form {
    left: 50%;
    top: 40%;
    transform: translate(-50%, -50%);
-   color: #3c818a;
-   background-color: rgb(248, 251, 251);
+   /* color: #3c818a; */
+   /* background-color: rgb(248, 251, 251); */
    /* width: 500px; */
    width: 50%;
-   border: 1px solid #3c818a;
+   /* border: 1px solid #3c818a; */
    padding: 50px;
-   color: #3c818a;
+   /* color: #3c818a; */
 }
 
-.auth-form input {
+/* .auth-form input {
    border: 0.2px solid #3c818a;
    background-color: rgb(248, 251, 251);
-}
+} */
 
 input:focus {
-   outline: none;
+   outline: 1px solid #5bc0be;
+}
+
+.verse {
+   position: absolute;
+   left: 50%;
+   top: 40%;
+   transform: translate(-50%, -50%);
+   /* color: #3c818a; */
+   background-color: rgb(248, 251, 251);
+   /* width: 500px; */
+   width: 80%;
+   /* border: 1px solid #3c818a; */
+   padding: 50px;
+   /* color: #3c818a; */
 }
 
 .pagination-links {
@@ -56,6 +70,7 @@ input:focus {
 .biblebook-grid {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
    /* justify-items: ce nter; */
 }
 
@@ -63,12 +78,34 @@ h5.modal-title {
    color: #3c818a !important;
 }
 
-.btn {
+.book-btn {
    background-color: #3c818a;
    padding: 5px;
    border: 1px solid white;
    cursor: pointer;
    color: #fff;
+}
+
+.auth-btn {
+   background-color: #3c818a;
+   border: 1px solid white;
+}
+
+.auth-link {
+   color: #3c818a;
+}
+
+.heading-blue {
+   color: #3c818a;
+}
+
+.verse-btn {
+   background-color: #fff;
+   padding: 5px;
+   border: 1px solid white;
+   cursor: pointer;
+   color: #000;
+   text-align: left;
 }
 
 .btn:hover {
@@ -85,11 +122,11 @@ h5.modal-title {
 }
 
 .pagination-btn {
-   margin: 10px;
-   padding: 5px;
+   margin: 20px;
+   padding: 0 5px 0 5px;
    background-color: #3c818a !important;
    color: #fff;
-   border: none;
+   border: 1px solid #3c818a;
 }
 
 footer {
@@ -118,4 +155,44 @@ footer p {
 .api-link:hover {
    color: rgb(49, 49, 197);
    border-bottom: none;
+}
+
+@media (max-width: 900px) {
+   .auth-form {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      /* color: #3c818a; */
+      /* background-color: rgb(248, 251, 251); */
+      /* width: 500px; */
+      width: 80%;
+      /* border: 1px solid #3c818a; */
+      padding: 50px;
+      /* color: #3c818a; */
+   }
+}
+
+@media (max-width: 500px) {
+   .auth-form {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      /* color: #3c818a; */
+      /* background-color: rgb(248, 251, 251); */
+      /* width: 500px; */
+      width: 100%;
+      /* border: 1px solid #3c818a; */
+      padding: 50px;
+      /* color: #3c818a; */
+   }
+}
+
+@media (max-width: 770px) {
+   .biblebook-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      /* justify-items: ce nter; */
+   }
 }

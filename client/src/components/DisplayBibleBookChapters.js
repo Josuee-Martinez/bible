@@ -18,19 +18,21 @@ const DisplayBibleBookChapters = ({
          <div className="mt-4 mb-4">
             <h3>{match.params.name}</h3>
          </div>
-         <div className="biblebook-grid">
+         <div className="biblebook-grid mb-4">
             {bibleBookChapters === null
                ? ""
                : bibleBookChapters.data.map((chapter, i) => (
                     <Link
                        to={`/chapter/${chapter.id}`}
-                       className="btn btn-primary"
+                       className="btn btn-primary book-btn"
                        key={i}
                        data-bibleid={chapter.bibleId}
                        data-chapterid={chapter.id}
                        onClick={getChapter}
                     >
-                       {chapter.reference.split(" ")[0]}: {chapter.number}
+                       {chapter.bookId.charAt(0) +
+                          chapter.bookId.slice(1).toLowerCase()}{" "}
+                       {chapter.number}
                     </Link>
                  ))}
          </div>

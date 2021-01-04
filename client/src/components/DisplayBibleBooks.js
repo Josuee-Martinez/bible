@@ -13,13 +13,13 @@ const DisplayBibleBooks = ({ bibleBooks, getBibleBookChapters }) => {
    };
 
    return (
-      <div className="biblebook-grid mt-0">
+      <div className="biblebook-grid mt-0 mb-4">
          {bibleBooks === null
             ? ""
             : bibleBooks.data.map((book, i) => (
                  <Link
                     to={`/book/${book.name}`}
-                    className="btn btn-primary"
+                    className="btn btn-primary book-btn"
                     onClick={getChapters}
                     data-bibleid={book.bibleId}
                     data-biblebookid={book.id}

@@ -15,6 +15,7 @@ app.use(require("./middleware/headers"));
 app.use("/api/bibles", require("./controllers/bibleController"));
 app.use("/api/user", require("./controllers/userController"));
 app.use("/api/auth", require("./controllers/authController"));
+app.use("/api/verse", require("./controllers/verseCollectionController"));
 
 const PORT = process.env.PORT || 5000;
 

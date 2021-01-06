@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getSingleChapter } from "../actions/getBibles";
 import { getChapterVerse } from "../actions/getBibles";
 import { saveVerse } from "../actions/verseCollection";
-import auth from "../reducers/auth";
 
 const DisplayChapter = ({
    getSingleChapter,
@@ -24,6 +23,7 @@ const DisplayChapter = ({
 
    const getVerse = (e) => {
       getChapterVerse(e.target.dataset.bibleid, e.target.dataset.verseid);
+      console.log(verse);
    };
 
    const saveUserVerse = (e) => {
@@ -41,7 +41,7 @@ const DisplayChapter = ({
       }
    };
 
-   console.log(chapter);
+   console.log(previousChapter, nextChapter);
    return (
       <Fragment>
          <div>
@@ -165,14 +165,14 @@ const DisplayChapter = ({
                  )}
          </div>
          <div className="pagination-links">
-            {previousChapter === null ? (
+            {previousChapter === null || previousChapter === undefined ? (
                ""
             ) : (
                <button onClick={getPrevious} className="pagination-btn">
                   <i className="fas fa-arrow-left"></i>
                </button>
             )}
-            {nextChapter === null ? (
+            {nextChapter === null || nextChapter === undefined ? (
                ""
             ) : (
                <button onClick={getNext} className="pagination-btn">

@@ -2,7 +2,6 @@ import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUserVerses } from "../../actions/verseCollection";
-// import router from "../../../../controllers/verseCollectionController";
 
 const Account = ({
    authenticated,

@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const config = require("config");
 const auth = require("../middleware/auth");
+const axios = require("axios");
 
 const VerseCollection = require("../models/VerseCollection");
 
@@ -44,6 +45,28 @@ router.get("/:id", auth, async (req, res) => {
    } catch (error) {
       console.error(error);
       res.status(500).send("server error");
+   }
+});
+
+//Get verse in different versions
+router.get("/:bibleId/verse/:verseId", auth, async (req, res) => {
+   try {
+      const config = {
+         headers: {
+            "api-key": process.env.API_KEY,
+         },
+      };
+      const axiosRes = await axios.get(
+         `https://api.scripture.api.bible/v1/bibles/${req.params.bibleId}/verses/${req.params.verseId}?content-type=json`,
+
+         config
+      );
+
+      res.json(axiosRes.data);
+   } catch (err) {
+      res.status(404).json({ error: [{ msg: err.response.data.message }] });
+      // console.error({ err: [{ msg: error.response.data.message }] });
+      console.error(err);
    }
 });
 

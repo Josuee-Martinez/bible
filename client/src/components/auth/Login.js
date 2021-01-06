@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
 import { Link, Redirect } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
 
-const Login = ({ login, authenticated }) => {
+const Login = ({ login, authenticated, setAlert }) => {
    const [user, setUser] = useState({
       email: "",
       password: "",
@@ -16,6 +17,10 @@ const Login = ({ login, authenticated }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
+      if (user.password === "josue") {
+         setAlert("kkk", "danger");
+      }
+      console.log(user.password);
       login({ user });
    };
 
@@ -66,4 +71,4 @@ const mapStateToProps = (state) => ({
    authenticated: state.auth.authenticated,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, setAlert })(Login);

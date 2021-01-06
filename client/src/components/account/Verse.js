@@ -1,30 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { getVerseById } from "../../actions/verseCollection";
+import { getBibles } from "../../actions/getBibles";
 
-const Verse = ({ getVerseById, singleVerse, match }) => {
+import VerseForm from "./VerseForm";
+import VersionVerse from "./VersionVerse";
+
+const Verse = ({
+   getVerseById,
+   singleVerse,
+   verseVersion,
+   match,
+   bibles,
+   getBibles,
+}) => {
    useEffect(() => {
       getVerseById(match.params.id);
-   }, [getVerseById]);
+      getBibles();
+   }, [getBibles]);
 
    return (
-      <div>
-         {singleVerse === null ? (
-            ""
-         ) : (
-            <div className="card verse">
-               <div className="card-body">
-                  <h5>{singleVerse.verseReference}</h5>
-                  <p>{singleVerse.verseText}</p>
-               </div>
-            </div>
-         )}
-      </div>
+      <Fragment>
+         <VerseForm bibles={bibles} singleVerse={singleVerse} />
+         <VersionVerse singleVerse={singleVerse} verseVersion={verseVersion} />
+      </Fragment>
    );
 };
 
 const mapStateToProps = (state) => ({
    singleVerse: state.verseCollection.singleVerse,
+   verseVersion: state.verseCollection.verseVersion,
+   bibles: state.getBibles.bibles,
+   error: state.verseCollection.error,
 });
 
-export default connect(mapStateToProps, { getVerseById })(Verse);
+export default connect(mapStateToProps, {
+   getVerseById,
+   getBibles,
+})(Verse);

@@ -14,6 +14,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Account from "./components/account/Account";
 import Signup from "./components/auth/Signup";
+import Alert from "./components/layout/Alert";
 import Login from "./components/auth/Login";
 import ProtectedRoute from "./components/route/ProtectedRoute";
 
@@ -35,6 +36,7 @@ function App() {
       <Provider store={store}>
          <Router>
             <Navbar />
+            <Alert />
             <Fragment>
                <div className="container">
                   <Switch>

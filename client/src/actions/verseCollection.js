@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setAlert } from "./alert";
 
 import {
    SAVE_VERSE,
@@ -7,6 +8,8 @@ import {
    GET_USER_VERSES_ERROR,
    GET_VERSE_BY_ID,
    GET_VERSE_BY_ID_ERROR,
+   GET_VERSE_VERSION,
+   GET_VERSE_VERSION_ERROR,
 } from "./types";
 
 export const saveVerse = (verseToSave) => async (dispatch) => {
@@ -43,5 +46,26 @@ export const getVerseById = (id) => async (dispatch) => {
       dispatch({ type: GET_VERSE_BY_ID, payload: res.data });
    } catch (error) {
       dispatch({ type: GET_VERSE_BY_ID_ERROR });
+   }
+};
+
+export const getVerseByVersion = (bibleId, verseId) => async (dispatch) => {
+   try {
+      const res = await axios.get(
+         `http://localhost:5000/api/verse/${bibleId}/verse/${verseId}`
+      );
+
+      dispatch({ type: GET_VERSE_VERSION, payload: res.data });
+   } catch (error) {
+      // const errors = err.msg;
+
+      error.response.data.error.forEach((erro) =>
+         dispatch(setAlert(erro.msg, "danger"))
+      );
+
+      dispatch({
+         type: GET_VERSE_VERSION_ERROR,
+      });
+      // console.log(err);
    }
 };

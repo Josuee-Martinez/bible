@@ -5,12 +5,15 @@ import {
    GET_USER_VERSES_ERROR,
    GET_VERSE_BY_ID,
    GET_VERSE_BY_ID_ERROR,
+   GET_VERSE_VERSION,
+   GET_VERSE_VERSION_ERROR,
 } from "../actions/types";
 
 const initialState = {
    verse: null,
    userVerses: null,
    singleVerse: null,
+   verseVersion: null,
 };
 
 export default function (state = initialState, action) {
@@ -36,6 +39,19 @@ export default function (state = initialState, action) {
          return {
             ...state,
             singleVerse: payload,
+            verseVersion: null,
+         };
+
+      case GET_VERSE_VERSION:
+         console.log(payload);
+         return {
+            ...state,
+            verseVersion: payload,
+         };
+      case GET_VERSE_VERSION_ERROR:
+         console.log(payload);
+         return {
+            ...state,
          };
       default:
          return state;

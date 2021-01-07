@@ -1,6 +1,7 @@
-* {
-   margin: 0;
-   padding: 0;
+*,
+::after,
+::before {
+   box-sizing: border-box;
 }
 
 span a {
@@ -22,14 +23,10 @@ nav {
    background-color: #3c818a !important;
 }
 
-form {
-   width: 100%;
-}
-
 .auth-form {
    position: absolute;
    left: 50%;
-   top: 40%;
+   top: 50%;
    transform: translate(-50%, -50%);
    /* color: #3c818a; */
    /* background-color: rgb(248, 251, 251); */
@@ -113,10 +110,6 @@ h5.modal-title {
    border: none;
 }
 
-.input-group.md-form.form-sm.form-2 button.blue-border {
-   border: 1px solid #3c818a;
-}
-
 .input-group.md-form.form-sm.form-2 select.blue-border {
    border: 1px solid #3c818a;
 }
@@ -157,11 +150,47 @@ footer p {
    border-bottom: none;
 }
 
+.alert {
+   text-align: center;
+
+   /* margin: 0; */
+   color: #fff;
+}
+
+.error {
+   background-color: #e9afaf;
+}
+
+.success {
+   background-color: #4fdba6;
+   color: #000;
+}
+
+/* .al {
+   display: none;
+} */
+.delete-verse {
+   border: none;
+   color: #f68181;
+   background-color: rgb(235, 235, 235);
+}
+
+.card-body {
+   position: relative;
+}
+
+.ex {
+   position: absolute;
+   top: 0;
+   left: 100%;
+   color: rgba(29, 29, 29, 0.993);
+}
+
 @media (max-width: 900px) {
    .auth-form {
       position: absolute;
       left: 50%;
-      top: 40%;
+      top: 50%;
       transform: translate(-50%, -50%);
       /* color: #3c818a; */
       /* background-color: rgb(248, 251, 251); */
@@ -177,7 +206,7 @@ footer p {
    .auth-form {
       position: absolute;
       left: 50%;
-      top: 40%;
+      top: 50%;
       transform: translate(-50%, -50%);
       /* color: #3c818a; */
       /* background-color: rgb(248, 251, 251); */
@@ -196,3 +225,9 @@ footer p {
       /* justify-items: ce nter; */
    }
 }
+
+/* @media (max-width: 380px) {
+   .alert {
+      height: 100px;
+   }
+} */

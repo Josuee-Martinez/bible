@@ -22,7 +22,7 @@ const GetBibleBooks = ({ getBibleBooks, bibles }) => {
 
    return (
       // <form onSubmit={handleSubmit} className="mt-4 mb-4">
-      <div className="form-group  input-group md-form form-sm form-2 pl-0 mt-4 mb-4">
+      <div className="form-group  input-group md-form form-sm form-2 mt-4 mb-4">
          {/* <input type="text" name="id" onChange={handleChange} /> */}
          <select
             type="text"

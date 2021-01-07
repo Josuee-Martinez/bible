@@ -17,11 +17,14 @@ const Login = ({ login, authenticated, setAlert }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      if (user.password === "josue") {
-         setAlert("kkk", "danger");
+
+      if (email === "") {
+         setAlert("Please enter an email address", "error");
+      } else if (password === "") {
+         setAlert("Please enter a password", "error");
+      } else {
+         login({ user });
       }
-      console.log(user.password);
-      login({ user });
    };
 
    if (authenticated) {
@@ -31,9 +34,8 @@ const Login = ({ login, authenticated, setAlert }) => {
    return (
       <form className="form auth-form mt-4" onSubmit={handleSubmit}>
          <div className="form-group">
-            {/* <label htmlFor="email">Enter Email</label> */}
             <input
-               type="text"
+               type="email"
                id="email"
                name="email"
                className="form-control form-control-lg mb-4"
@@ -43,7 +45,6 @@ const Login = ({ login, authenticated, setAlert }) => {
             />
          </div>
          <div className="form-group">
-            {/* <label htmlFor="password">Enter Password</label> */}
             <input
                type="password"
                id="password"

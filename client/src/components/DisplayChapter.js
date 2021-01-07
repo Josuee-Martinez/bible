@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { getSingleChapter } from "../actions/getBibles";
 import { getChapterVerse } from "../actions/getBibles";
 import { saveVerse } from "../actions/verseCollection";
+import { setAlert } from "../actions/alert";
 
 const DisplayChapter = ({
    getSingleChapter,
    getChapterVerse,
    saveVerse,
+   setAlert,
    data: { chapter, nextChapter, previousChapter, verse, verseContent },
    authenticated,
 }) => {
@@ -27,7 +29,6 @@ const DisplayChapter = ({
    };
 
    const saveUserVerse = (e) => {
-      // console.log(verse.data.reference, verseContent);
       if (authenticated) {
          const verseToSave = {
             verseId: verse.data.id,
@@ -37,7 +38,7 @@ const DisplayChapter = ({
 
          saveVerse({ verseToSave });
       } else {
-         console.log("u need t be logged");
+         setAlert("You need to create an account to save verse", "error");
       }
    };
 
@@ -102,6 +103,9 @@ const DisplayChapter = ({
                                                className="modal-title"
                                                id="exampleModalLabel"
                                             >
+                                               <i className="fas fa-bookmark">
+                                                  {" "}
+                                               </i>{" "}
                                                Save to verse collection ?
                                             </h5>
                                             <button
@@ -193,4 +197,5 @@ export default connect(mapStateToProps, {
    getSingleChapter,
    getChapterVerse,
    saveVerse,
+   setAlert,
 })(DisplayChapter);

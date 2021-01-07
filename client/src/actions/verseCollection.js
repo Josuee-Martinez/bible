@@ -10,6 +10,7 @@ import {
    GET_VERSE_BY_ID_ERROR,
    GET_VERSE_VERSION,
    GET_VERSE_VERSION_ERROR,
+   DELETE_VERSE,
 } from "./types";
 
 export const saveVerse = (verseToSave) => async (dispatch) => {
@@ -57,15 +58,25 @@ export const getVerseByVersion = (bibleId, verseId) => async (dispatch) => {
 
       dispatch({ type: GET_VERSE_VERSION, payload: res.data });
    } catch (error) {
-      // const errors = err.msg;
-
-      error.response.data.error.forEach((erro) =>
-         dispatch(setAlert(erro.msg, "danger"))
+      error.response.data.errors.forEach((err) =>
+         dispatch(setAlert(err.msg, "error"))
       );
 
       dispatch({
          type: GET_VERSE_VERSION_ERROR,
       });
       // console.log(err);
+   }
+};
+
+export const deleteVerse = (history, id) => async (dispatch) => {
+   try {
+      const res = await axios.delete(`http://localhost:5000/api/verse/${id}`);
+
+      dispatch({ type: DELETE_VERSE, payload: res.data });
+      dispatch(setAlert("Verse was removed", "error"));
+      history.push("/account");
+   } catch (error) {
+      console.log(error);
    }
 };

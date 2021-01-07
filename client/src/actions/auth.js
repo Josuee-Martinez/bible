@@ -1,5 +1,6 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
+import { setAlert } from "./alert";
 
 import {
    SIGNUP,
@@ -39,7 +40,10 @@ export const signup = (user) => async (dispatch) => {
 
       dispatch({ type: SIGNUP, payload: res.data });
       dispatch(loadUser());
-   } catch (err) {
+   } catch (error) {
+      error.response.data.errors.map((err) =>
+         dispatch(setAlert(err.msg, "error"))
+      );
       dispatch({
          type: SIGNUP_ERROR,
       });
@@ -61,7 +65,10 @@ export const login = (user) => async (dispatch) => {
 
       dispatch({ type: LOGIN, payload: res.data });
       dispatch(loadUser());
-   } catch (err) {
+   } catch (error) {
+      error.response.data.errors.map((err) =>
+         dispatch(setAlert(err.msg, "error"))
+      );
       dispatch({
          type: LOGIN_ERROR,
       });

@@ -34,7 +34,7 @@ const Account = ({
          ) : (
             <Fragment>
                <h3 className="mt-4 mb-4 text-center heading-blue">
-                  <i className="fas fa-book-open">
+                  <i className="fas fa-bookmark">
                      {user === null
                         ? ""
                         : ` ${

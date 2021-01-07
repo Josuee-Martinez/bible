@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { signup } from "../../actions/auth";
 import { Link, Redirect } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
 
-const Signup = ({ signup, authenticated }) => {
+const Signup = ({ signup, authenticated, setAlert }) => {
    const [user, setUser] = useState({
       email: "",
       username: "",
@@ -17,7 +18,16 @@ const Signup = ({ signup, authenticated }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      signup({ user });
+
+      if (email === "") {
+         setAlert("Enter an email address", "error");
+      } else if (username === "") {
+         setAlert("Choose a username", "error");
+      } else if (password === "") {
+         setAlert("Choose a password", "error");
+      } else {
+         signup({ user });
+      }
    };
 
    if (authenticated) {
@@ -29,7 +39,7 @@ const Signup = ({ signup, authenticated }) => {
          <div className="form-group">
             {/* <label htmlFor="email">Enter Email:</label> */}
             <input
-               type="text"
+               type="email"
                id="email"
                name="email"
                className="form-control form-control-lg mb-4"
@@ -79,4 +89,4 @@ const mapStateToProps = (state) => ({
    authenticated: state.auth.authenticated,
 });
 
-export default connect(mapStateToProps, { signup })(Signup);
+export default connect(mapStateToProps, { signup, setAlert })(Signup);

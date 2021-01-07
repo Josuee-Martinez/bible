@@ -17,7 +17,11 @@ router.post("/", async (req, res) => {
       if (user) {
          return res
             .status(400)
-            .json({ errors: [{ msg: "User already exists" }] });
+            .json({
+               errors: [
+                  { msg: "This email is registered with a different account" },
+               ],
+            });
       }
 
       user = new User({

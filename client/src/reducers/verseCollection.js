@@ -7,6 +7,7 @@ import {
    GET_VERSE_BY_ID_ERROR,
    GET_VERSE_VERSION,
    GET_VERSE_VERSION_ERROR,
+   DELETE_VERSE,
 } from "../actions/types";
 
 const initialState = {
@@ -52,6 +53,11 @@ export default function (state = initialState, action) {
          console.log(payload);
          return {
             ...state,
+         };
+      case DELETE_VERSE:
+         return {
+            ...state,
+            singleVerse: null,
          };
       default:
          return state;

@@ -30,18 +30,19 @@ export default function (state = initialState, action) {
             bibles: payload,
          };
       case GET_BIBLE_BOOKS:
+         sessionStorage.setItem("bibleBooks", JSON.stringify(payload));
          return {
             ...state,
             bibleBooks: payload,
          };
       case GET_BIBLE_BOOK_CHAPTERS:
-         // console.log(payload);
+         sessionStorage.setItem("bibleChapters", JSON.stringify(payload));
          return {
             ...state,
             bibleBookChapters: payload,
          };
       case GET_SINGLE_CHAPTER:
-         // console.log(payload.data);
+         console.log(payload.data);
          return {
             ...state,
             chapter: payload,

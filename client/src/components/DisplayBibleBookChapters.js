@@ -8,6 +8,10 @@ const DisplayBibleBookChapters = ({
    data: { bibleBookChapters },
    match,
 }) => {
+   let localData;
+   if (sessionStorage.getItem("bibleChapters")) {
+      localData = JSON.parse(sessionStorage.getItem("bibleChapters")).data;
+   }
    console.log(bibleBookChapters);
    const getChapter = (e) => {
       getSingleChapter(e.target.dataset.bibleid, e.target.dataset.chapterid);
@@ -19,7 +23,24 @@ const DisplayBibleBookChapters = ({
             <h3>{match.params.name}</h3>
          </div>
          <div className="biblebook-grid mb-4">
-            {bibleBookChapters === null
+            {bibleBookChapters === null && !localData
+               ? ""
+               : bibleBookChapters === null
+               ? localData.map((chapter, i) => (
+                    <Link
+                       to={`/chapter/${chapter.id}`}
+                       className="btn btn-primary book-btn"
+                       key={i}
+                       data-bibleid={chapter.bibleId}
+                       data-chapterid={chapter.id}
+                       onClick={getChapter}
+                    >
+                       {chapter.bookId.charAt(0) +
+                          chapter.bookId.slice(1).toLowerCase()}{" "}
+                       {chapter.number}
+                    </Link>
+                 ))
+               : bibleBookChapters === null
                ? ""
                : bibleBookChapters.data.map((chapter, i) => (
                     <Link
@@ -35,6 +56,22 @@ const DisplayBibleBookChapters = ({
                        {chapter.number}
                     </Link>
                  ))}
+            {/* {bibleBookChapters === null
+               ? ""
+               : bibleBookChapters.data.map((chapter, i) => (
+                    <Link
+                       to={`/chapter/${chapter.id}`}
+                       className="btn btn-primary book-btn"
+                       key={i}
+                       data-bibleid={chapter.bibleId}
+                       data-chapterid={chapter.id}
+                       onClick={getChapter}
+                    >
+                       {chapter.bookId.charAt(0) +
+                          chapter.bookId.slice(1).toLowerCase()}{" "}
+                       {chapter.number}
+                    </Link>
+                 ))} */}
          </div>
       </Fragment>
    );

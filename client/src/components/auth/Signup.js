@@ -37,7 +37,6 @@ const Signup = ({ signup, authenticated, setAlert }) => {
    return (
       <form className="form auth-form mt-4 form-info" onSubmit={handleSubmit}>
          <div className="form-group">
-            {/* <label htmlFor="email">Enter Email:</label> */}
             <input
                type="email"
                id="email"
@@ -49,7 +48,6 @@ const Signup = ({ signup, authenticated, setAlert }) => {
             />
          </div>
          <div className="form-group">
-            {/* <label htmlFor="username">Enter Username:</label> */}
             <input
                type="text"
                id="username"
@@ -61,7 +59,6 @@ const Signup = ({ signup, authenticated, setAlert }) => {
             />
          </div>
          <div className="form-group">
-            {/* <label htmlFor="password">Enter Password:</label> */}
             <input
                type="password"
                id="password"

@@ -8,6 +8,8 @@ import {
    GET_VERSE_VERSION,
    GET_VERSE_VERSION_ERROR,
    DELETE_VERSE,
+   FILTERED_VERSE,
+   CLEAR_FILTERED_VERSE,
 } from "../actions/types";
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
    userVerses: null,
    singleVerse: null,
    verseVersion: null,
+   filteredVerse: null,
 };
 
 export default function (state = initialState, action) {
@@ -58,6 +61,22 @@ export default function (state = initialState, action) {
          return {
             ...state,
             singleVerse: null,
+         };
+      case FILTERED_VERSE:
+         return {
+            ...state,
+            filteredVerse: state.userVerses.filter((verse) => {
+               const regex = new RegExp(`${payload}`, "gi");
+               return (
+                  verse.verseReference.match(regex) ||
+                  verse.verseText.match(regex)
+               );
+            }),
+         };
+      case CLEAR_FILTERED_VERSE:
+         return {
+            ...state,
+            filteredVerse: null,
          };
       default:
          return state;

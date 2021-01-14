@@ -42,7 +42,16 @@ export default function (state = initialState, action) {
             bibleBookChapters: payload,
          };
       case GET_SINGLE_CHAPTER:
-         console.log(payload.data);
+         // console.log(payload.data);
+         sessionStorage.setItem("chapter", JSON.stringify(payload));
+         sessionStorage.setItem(
+            "nextChapter",
+            JSON.stringify(payload.data.next)
+         );
+         sessionStorage.setItem(
+            "previousChapter",
+            JSON.stringify(payload.data.previous)
+         );
          return {
             ...state,
             chapter: payload,

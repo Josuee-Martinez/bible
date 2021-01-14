@@ -1,19 +1,21 @@
 import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getUserVerses } from "../../actions/verseCollection";
+import { getUserVerses, filteredVerses } from "../../actions/verseCollection";
+import FilterVerseForm from "./FilterVerseForm";
 
 const Account = ({
    authenticated,
    user,
    userVerses,
    getUserVerses,
+   filteredVerse,
    loading,
 }) => {
    useEffect(() => {
       getUserVerses();
    }, [getUserVerses]);
-   console.log(authenticated);
+   console.log(filteredVerse);
    console.log(userVerses);
    return (
       <div className="mb-4">
@@ -43,24 +45,34 @@ const Account = ({
                           }'s verse collection `}
                   </i>
                </h3>
-               <input
-                  className="form-control mb-4"
-                  type="text"
-                  placeholder="Search verse"
-               ></input>
-               {userVerses.map((verse, i) => (
-                  <div className="card" key={i}>
-                     <Link
-                        to={`/verse/${verse._id}`}
-                        className="btn btn-primary verse-btn"
-                     >
-                        <div className="card-body">
-                           <h6>{verse.verseReference}</h6>
-                           <p>{verse.verseText}</p>
-                        </div>
-                     </Link>
-                  </div>
-               ))}
+               <FilterVerseForm />
+               {filteredVerse !== null
+                  ? filteredVerse.map((verse, i) => (
+                       <div className="card" key={i}>
+                          <Link
+                             to={`/verse/${verse._id}`}
+                             className="btn btn-primary verse-btn"
+                          >
+                             <div className="card-body">
+                                <h6>{verse.verseReference}</h6>
+                                <p>{verse.verseText}</p>
+                             </div>
+                          </Link>
+                       </div>
+                    ))
+                  : userVerses.map((verse, i) => (
+                       <div className="card" key={i}>
+                          <Link
+                             to={`/verse/${verse._id}`}
+                             className="btn btn-primary verse-btn"
+                          >
+                             <div className="card-body">
+                                <h6>{verse.verseReference}</h6>
+                                <p>{verse.verseText}</p>
+                             </div>
+                          </Link>
+                       </div>
+                    ))}
             </Fragment>
          )}
       </div>
@@ -72,6 +84,7 @@ const mapStateToProps = (state) => ({
    user: state.auth.user,
    userVerses: state.verseCollection.userVerses,
    loading: state.auth.loading,
+   filteredVerse: state.verseCollection.filteredVerse,
 });
 
 export default connect(mapStateToProps, { getUserVerses })(Account);

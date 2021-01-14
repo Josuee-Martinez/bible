@@ -11,6 +11,8 @@ import {
    GET_VERSE_VERSION,
    GET_VERSE_VERSION_ERROR,
    DELETE_VERSE,
+   FILTERED_VERSE,
+   CLEAR_FILTERED_VERSE,
 } from "./types";
 
 export const saveVerse = (verseToSave) => async (dispatch) => {
@@ -79,4 +81,12 @@ export const deleteVerse = (history, id) => async (dispatch) => {
    } catch (error) {
       console.log(error);
    }
+};
+
+export const filteredVerses = (str) => async (dispatch) => {
+   dispatch({ type: FILTERED_VERSE, payload: str });
+};
+
+export const clearFilteredVerses = () => async (dispatch) => {
+   dispatch({ type: CLEAR_FILTERED_VERSE });
 };

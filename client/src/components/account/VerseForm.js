@@ -8,21 +8,14 @@ const VerseForm = ({ getVerseByVersion, singleVerse, bibles }) => {
 
    const handleChange = (e) => {
       setId(e.target.value);
-      //   setId({ ...id, [e.target.name]: e.target.value });
    };
 
    if (id !== "") {
       getVerseByVersion(id, singleVerse.verseId);
-      //   console.log(id, singleVerse.verseId);
    }
 
-   //    if (verseVersion !== null) {
-   //       console.log(verseVersion);
-   //    }
-   //    console.log(id);
    return (
       <div className="form-group  input-group md-form form-sm form-2 pl-0 mt-4 mb-4">
-         {/* <input type="text" name="id" onChange={handleChange} /> */}
          <select
             type="text"
             name="id"
@@ -43,15 +36,8 @@ const VerseForm = ({ getVerseByVersion, singleVerse, bibles }) => {
                     }
                  })}
          </select>
-         {/* <button type="submit" className="input-group-text blue-border">
-           <i className="fas fa-search"></i>
-        </button> */}
       </div>
    );
 };
-
-// const mapStateToProps = (state) => ({
-//    verseVersion: state.verseCollection.verseVersion,
-// });
 
 export default connect(null, { getChapterVerse, getVerseByVersion })(VerseForm);

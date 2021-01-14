@@ -7,8 +7,3 @@ export const setAlert = (msg, alertType) => (dispatch) => {
 
    setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), 4000);
 };
-
-export const remove = (e) => (dispatch) => {
-   console.log(e.target.parentElement.parentElement.parentElement);
-   e.target.parentElement.parentElement.parentElement.style.display = "none";
-};

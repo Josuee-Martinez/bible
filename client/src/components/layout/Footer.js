@@ -4,7 +4,7 @@ const Footer = () => {
    return (
       <footer>
          <p>
-            Powered by{" "}
+            Powered in part by{" "}
             <a
                className="api-link"
                href="https://scripture.api.bible/"

@@ -7,23 +7,14 @@ const GetBibleBooks = ({ getBibleBooks, bibles }) => {
 
    const handleChange = (e) => {
       setId(e.target.value);
-      // setId({ ...id, [e.target.name]: e.target.value });
    };
 
    if (id !== "") {
       getBibleBooks(id);
    }
 
-   // const handleSubmit = (e) => {
-   //    e.preventDefault();
-   //    getBibleBooks(id);
-   // };
-   console.log(bibles);
-
    return (
-      // <form onSubmit={handleSubmit} className="mt-4 mb-4">
       <div className="form-group  input-group md-form form-sm form-2 mt-4 mb-4">
-         {/* <input type="text" name="id" onChange={handleChange} /> */}
          <select
             type="text"
             name="id"
@@ -44,11 +35,7 @@ const GetBibleBooks = ({ getBibleBooks, bibles }) => {
                     }
                  })}
          </select>
-         {/* <button type="submit" className="input-group-text blue-border">
-               <i className="fas fa-search"></i>
-            </button> */}
       </div>
-      // </form>
    );
 };
 

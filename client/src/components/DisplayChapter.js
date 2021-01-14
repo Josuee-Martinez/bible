@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getSingleChapter } from "../actions/getBibles";
 import { getChapterVerse } from "../actions/getBibles";
@@ -13,6 +14,18 @@ const DisplayChapter = ({
    data: { chapter, nextChapter, previousChapter, verse, verseContent },
    authenticated,
 }) => {
+   if (chapter === null && sessionStorage.getItem("chapter")) {
+      chapter = JSON.parse(sessionStorage.getItem("chapter"));
+   }
+
+   if (nextChapter === null && sessionStorage.getItem("nextChapter")) {
+      nextChapter = JSON.parse(sessionStorage.getItem("nextChapter"));
+   }
+
+   if (previousChapter === null && sessionStorage.getItem("previousChapter")) {
+      previousChapter = JSON.parse(sessionStorage.getItem("previousChapter"));
+   }
+
    const getNext = () => {
       getSingleChapter(chapter.data.bibleId, nextChapter.id);
       window.scrollTo(0, 0);
@@ -42,10 +55,17 @@ const DisplayChapter = ({
       }
    };
 
-   console.log(previousChapter, nextChapter);
+   console.log(chapter.data.bookId);
+
    return (
       <Fragment>
          <div>
+            <Link
+               to={`/book/${chapter.data.bookId}`}
+               className="btn btn-primary book-btn mt-4"
+            >
+               <i className="fas fa-arrow-left"></i> Go back
+            </Link>
             <h3 className="mt-4 mb-4">
                {chapter === null
                   ? ""

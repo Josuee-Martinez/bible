@@ -19,6 +19,9 @@ const DisplayBibleBookChapters = ({
 
    return (
       <Fragment>
+         <Link to="/" className="btn btn-primary book-btn mt-4">
+            <i className="fas fa-arrow-left"></i> Go back
+         </Link>
          <div className="mt-4 mb-4">
             <h3>{match.params.name}</h3>
          </div>
@@ -56,22 +59,6 @@ const DisplayBibleBookChapters = ({
                        {chapter.number}
                     </Link>
                  ))}
-            {/* {bibleBookChapters === null
-               ? ""
-               : bibleBookChapters.data.map((chapter, i) => (
-                    <Link
-                       to={`/chapter/${chapter.id}`}
-                       className="btn btn-primary book-btn"
-                       key={i}
-                       data-bibleid={chapter.bibleId}
-                       data-chapterid={chapter.id}
-                       onClick={getChapter}
-                    >
-                       {chapter.bookId.charAt(0) +
-                          chapter.bookId.slice(1).toLowerCase()}{" "}
-                       {chapter.number}
-                    </Link>
-                 ))} */}
          </div>
       </Fragment>
    );

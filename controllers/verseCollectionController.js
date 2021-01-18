@@ -21,8 +21,8 @@ router.post("/", auth, async (req, res) => {
       const newVerse = await verse.save();
       res.json(newVerse);
    } catch (error) {
-      console.error(error.message);
       res.status(500).send("Server error");
+      console.error(error.message);
    }
 });
 
@@ -32,8 +32,8 @@ router.get("/", auth, async (req, res) => {
       const verse = await VerseCollection.find({ user: req.user.id }).exec();
       res.json(verse);
    } catch (error) {
-      console.error(error);
       res.status(500).send("server error");
+      console.error(error);
    }
 });
 
@@ -43,8 +43,8 @@ router.get("/:id", auth, async (req, res) => {
       const verse = await VerseCollection.findById(req.params.id).exec();
       res.json(verse);
    } catch (error) {
-      console.error(error);
       res.status(500).send("server error");
+      console.error(error);
    }
 });
 
@@ -82,6 +82,7 @@ router.delete("/:id", auth, async (req, res) => {
 
       res.json({ msg: "verse removed" });
    } catch (error) {
+      res.status(500).send("Server error");
       console.error(error);
    }
 });

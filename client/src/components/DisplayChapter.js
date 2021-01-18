@@ -55,24 +55,29 @@ const DisplayChapter = ({
       }
    };
 
-   console.log(chapter.data.bookId);
+   // console.log(chapter.data.bookId);
 
    return (
       <Fragment>
          <div>
-            <Link
-               to={`/book/${chapter.data.bookId}`}
-               className="btn btn-primary book-btn mt-4"
-            >
-               <i className="fas fa-arrow-left"></i> Go back
-            </Link>
-            <h3 className="mt-4 mb-4">
-               {chapter === null
-                  ? ""
-                  : chapter.data.reference.split(" ")[0] +
-                    " " +
-                    chapter.data.number}
-            </h3>
+            {chapter === null ? (
+               ""
+            ) : (
+               <Fragment>
+                  <Link
+                     to={`/book/${chapter.data.bookId}`}
+                     className="btn btn-primary book-btn mt-4"
+                  >
+                     <i className="fas fa-arrow-left"></i> Go back
+                  </Link>
+                  <h3 className="mt-4 mb-4">
+                     {chapter.data.reference.split(" ")[0] +
+                        " " +
+                        chapter.data.number}
+                  </h3>
+               </Fragment>
+            )}
+
             {chapter === null
                ? ""
                : chapter.data.content.map((item) =>
@@ -90,7 +95,7 @@ const DisplayChapter = ({
                              console.log(n, "de", selectedVerse);
                           }
                           return (
-                             <Fragment>
+                             <Fragment key={i}>
                                 <a
                                    data-toggle="modal"
                                    data-target="#exampleModal"
@@ -104,7 +109,6 @@ const DisplayChapter = ({
                                 </a>
 
                                 <div
-                                   key={i}
                                    className="modal fade"
                                    id="exampleModal"
                                    tabIndex="-1"
@@ -115,9 +119,8 @@ const DisplayChapter = ({
                                    <div
                                       className="modal-dialog"
                                       role="document"
-                                      key={i}
                                    >
-                                      <div className="modal-content" key={i}>
+                                      <div className="modal-content">
                                          <div className="modal-header">
                                             <h5
                                                className="modal-title"
@@ -181,14 +184,14 @@ const DisplayChapter = ({
                        }
 
                        return (
-                          <span>
+                          <span key={i}>
                              {n.name === "char" ? n.items[0].text : ""} {n.text}{" "}
                           </span>
                        );
                     })
                  )}
          </div>
-         <div className="pagination-links">
+         <div className="text-center">
             {previousChapter === null || previousChapter === undefined ? (
                ""
             ) : (

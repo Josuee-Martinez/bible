@@ -36,6 +36,9 @@ const Signup = ({ signup, authenticated, setAlert }) => {
 
    return (
       <form className="form auth-form mt-4 form-info" onSubmit={handleSubmit}>
+         <h3 className="text-center mb-4">
+            <i className="fas fa-book"></i> My Bible
+         </h3>
          <div className="form-group">
             <input
                type="email"

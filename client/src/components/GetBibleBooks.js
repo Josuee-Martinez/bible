@@ -12,6 +12,7 @@ const GetBibleBooks = ({ getBibleBooks, bibles }) => {
    if (id !== "") {
       getBibleBooks(id);
    }
+   console.log(bibles);
 
    return (
       <div className="form-group  input-group md-form form-sm form-2 mt-4 mb-4">

@@ -39,7 +39,7 @@ const Navbar = ({ authenticated, loading, logout }) => {
       <nav className="navbar navbar-expand navbar-dark">
          <div className="container">
             <Link className="navbar-brand" to="/">
-               MyBible
+               <i className="fas fa-book"></i> My Bible
             </Link>
 
             <ul className="navbar-nav ml-auto">

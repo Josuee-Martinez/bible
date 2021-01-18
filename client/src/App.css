@@ -13,11 +13,10 @@ span a {
 }
 
 body {
-   min-height: 100vh; /* will cover the 100% of viewport */
-
+   min-height: 100vh;
    display: block;
    position: relative;
-   padding-bottom: 56px; /* height of your footer */
+   padding-bottom: 56px;
 }
 nav {
    background-color: #3c818a !important;
@@ -28,22 +27,8 @@ nav {
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%);
-   /* color: #3c818a; */
-   /* background-color: rgb(248, 251, 251); */
-   /* width: 500px; */
    width: 50%;
-   /* border: 1px solid #3c818a; */
    padding: 50px;
-   /* color: #3c818a; */
-}
-
-/* .auth-form input {
-   border: 0.2px solid #3c818a;
-   background-color: rgb(248, 251, 251);
-} */
-
-input:focus {
-   outline: 1px solid #5bc0be;
 }
 
 .verse {
@@ -51,24 +36,14 @@ input:focus {
    left: 50%;
    top: 40%;
    transform: translate(-50%, -50%);
-   /* color: #3c818a; */
    background-color: rgb(248, 251, 251);
-   /* width: 500px; */
    width: 80%;
-   /* border: 1px solid #3c818a; */
    padding: 50px;
-   /* color: #3c818a; */
-}
-
-.pagination-links {
-   text-align: center;
 }
 
 .biblebook-grid {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
-   /* justify-items: ce nter; */
 }
 
 h5.modal-title {
@@ -122,9 +97,11 @@ h5.modal-title {
    border: 1px solid #3c818a;
 }
 
+form > h3 {
+   color: #3c818a;
+}
+
 footer {
-   /* text-align: center;
-   margin: auto; */
    background-color: #3c818a;
    position: absolute;
    bottom: 0;
@@ -152,8 +129,6 @@ footer p {
 
 .alert {
    text-align: center;
-
-   /* margin: 0; */
    color: #fff;
 }
 
@@ -166,9 +141,6 @@ footer p {
    color: #000;
 }
 
-/* .al {
-   display: none;
-} */
 .delete-verse {
    border: none;
    color: #f68181;
@@ -179,26 +151,14 @@ footer p {
    position: relative;
 }
 
-.ex {
-   position: absolute;
-   top: 0;
-   left: 100%;
-   color: rgba(29, 29, 29, 0.993);
-}
-
 @media (max-width: 900px) {
    .auth-form {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      /* color: #3c818a; */
-      /* background-color: rgb(248, 251, 251); */
-      /* width: 500px; */
       width: 80%;
-      /* border: 1px solid #3c818a; */
       padding: 50px;
-      /* color: #3c818a; */
    }
 }
 
@@ -208,13 +168,8 @@ footer p {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      /* color: #3c818a; */
-      /* background-color: rgb(248, 251, 251); */
-      /* width: 500px; */
       width: 100%;
-      /* border: 1px solid #3c818a; */
       padding: 50px;
-      /* color: #3c818a; */
    }
 }
 
@@ -222,12 +177,5 @@ footer p {
    .biblebook-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      /* justify-items: ce nter; */
    }
 }
-
-/* @media (max-width: 380px) {
-   .alert {
-      height: 100px;
-   }
-} */

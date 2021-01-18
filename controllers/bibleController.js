@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
 
       res.json(axiosRes.data);
    } catch (error) {
+      res.status(500).send("error");
       console.error(error);
    }
 });
@@ -35,6 +36,7 @@ router.get("/:bibleId/books", async (req, res) => {
 
       res.json(axiosRes.data);
    } catch (error) {
+      res.status(500).send("error");
       console.error(error);
    }
 });
@@ -54,6 +56,7 @@ router.get("/:bibleId/book/:bibleBookId", async (req, res) => {
 
       res.json(axiosRes.data);
    } catch (error) {
+      res.status(500).send("error");
       console.error(error);
    }
 });
@@ -73,6 +76,7 @@ router.get("/:bibleId/chapter/:chapterId", async (req, res) => {
 
       res.json(axiosRes.data);
    } catch (error) {
+      res.status(500).send("error");
       console.error(error);
    }
 });
@@ -92,6 +96,7 @@ router.get("/:bibleId/verse/:verseId", async (req, res) => {
 
       res.json(axiosRes.data);
    } catch (error) {
+      res.status(500).send("error");
       console.error(error);
    }
 });

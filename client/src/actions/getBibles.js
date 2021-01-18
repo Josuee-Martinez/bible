@@ -18,9 +18,10 @@ export const getBibles = () => async (dispatch) => {
       const res = await axios.get("http://localhost:5000/api/bibles");
 
       dispatch({ type: GET_BIBLES, payload: res.data });
-   } catch (err) {
+   } catch (error) {
       dispatch({
          type: GET_BIBLES_ERROR,
+         payload: error,
       });
    }
 };
@@ -32,9 +33,10 @@ export const getBibleBooks = (bibleId) => async (dispatch) => {
       );
 
       dispatch({ type: GET_BIBLE_BOOKS, payload: res.data });
-   } catch (err) {
+   } catch (error) {
       dispatch({
          type: GET_BIBLE_BOOKS_ERROR,
+         payload: error,
       });
    }
 };
@@ -48,9 +50,10 @@ export const getBibleBookChapters = (bibleId, bibleBookId) => async (
       );
 
       dispatch({ type: GET_BIBLE_BOOK_CHAPTERS, payload: res.data });
-   } catch (err) {
+   } catch (error) {
       dispatch({
          type: GET_BIBLE_BOOK_CHAPTERS_ERROR,
+         payload: error,
       });
    }
 };
@@ -62,9 +65,10 @@ export const getSingleChapter = (bibleId, chapterId) => async (dispatch) => {
       );
 
       dispatch({ type: GET_SINGLE_CHAPTER, payload: res.data });
-   } catch (err) {
+   } catch (error) {
       dispatch({
          type: GET_SINGLE_CHAPTER_ERROR,
+         payload: error,
       });
    }
 };
@@ -76,9 +80,10 @@ export const getChapterVerse = (bibleId, verseId) => async (dispatch) => {
       );
 
       dispatch({ type: GET_CHAPTER_VERSE, payload: res.data });
-   } catch (err) {
+   } catch (error) {
       dispatch({
          type: GET_CHAPTER_VERSE_ERROR,
+         payload: error,
       });
    }
 };

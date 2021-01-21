@@ -26,15 +26,13 @@ const VerseForm = ({ getVerseByVersion, singleVerse, bibles }) => {
             <option value="">Read Verse in Other Versions</option>
             {bibles === null
                ? ""
-               : bibles.data.map((bible, i) => {
-                    if (bible.language.id === "eng") {
-                       return (
-                          <option key={i} value={bible.id}>
-                             {bible.name}
-                          </option>
-                       );
-                    }
-                 })}
+               : bibles.data
+                    .filter((bible) => bible.language.id === "eng")
+                    .map((bible, i) => (
+                       <option key={i} value={bible.id}>
+                          {bible.name}
+                       </option>
+                    ))}
          </select>
       </div>
    );

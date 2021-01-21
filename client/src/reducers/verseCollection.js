@@ -20,7 +20,7 @@ const initialState = {
    filteredVerse: null,
 };
 
-export default function (state = initialState, action) {
+const verseCollection = (state = initialState, action) => {
    const { type, payload } = action;
    switch (type) {
       case SAVE_VERSE:
@@ -81,4 +81,6 @@ export default function (state = initialState, action) {
       default:
          return state;
    }
-}
+};
+
+export default verseCollection;

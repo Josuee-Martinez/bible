@@ -17,7 +17,7 @@ const Verse = ({
    useEffect(() => {
       getVerseById(match.params.id);
       getBibles();
-   }, [getBibles]);
+   }, [getBibles, match, getVerseById]);
 
    return (
       <Fragment>

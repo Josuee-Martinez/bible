@@ -23,7 +23,7 @@ const initialState = {
    error: null,
 };
 
-export default function (state = initialState, action) {
+const getBibles = (state = initialState, action) => {
    const { type, payload } = action;
    switch (type) {
       case GET_BIBLES:
@@ -100,4 +100,6 @@ export default function (state = initialState, action) {
       default:
          return state;
    }
-}
+};
+
+export default getBibles;

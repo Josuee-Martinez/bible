@@ -29,7 +29,7 @@ const VersionVerse = ({ verseVersion, singleVerse, deleteVerse, history }) => {
                   </p>
                   <button className="delete-verse">
                      <i
-                        class="fas fa-trash-alt"
+                        className="fas fa-trash-alt"
                         onClick={() => deleteVerse(history, singleVerse._id)}
                      ></i>
                   </button>

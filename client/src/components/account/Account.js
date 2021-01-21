@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getUserVerses, filteredVerses } from "../../actions/verseCollection";
+import { getUserVerses } from "../../actions/verseCollection";
 import FilterVerseForm from "./FilterVerseForm";
 
 const Account = ({
